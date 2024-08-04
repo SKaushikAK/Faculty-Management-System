@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Faculty Information System</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+
+    
+    
+    <script>
+        function login(event) {
+            event.preventDefault(); 
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;  
+            console.log(username); 
+            console.log(password)
+        
+
+            // Simulate a server-side login check
+            if (username === 'Swathika' && password === 'swathi') {
+                // Redirect to faculty portal or show content
+                window.location.href = "/faculty"; 
+            }  
+          
+            else if(username === 'Admin' && password === 'admin123')
+             {
+                // Redirect to faculty portal or show content
+                window.location.href = "/home"; 
+
+
+            }
+            else {
+                // Display an error message (replace this with actual error handling)
+                alert('Invalid username or password');
+            }
+        }
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+        
+        function toggleContactVisibility() {
+            const contactSection = document.getElementById('contact');
+
+            // Show the contact section
+            contactSection.style.display = 'block';
+
+            // Scroll to the contact section
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+       
+        
+    </script>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    {% load static %}
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url({% static 'background.jpg' %});
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    color: #000; 
+}
+
+
+
+nav {
+    background-color: #1552ac; 
+    color: #fff; 
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+#logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    left:20px;
+    position:relative;
+}
+
+#head {
+    text-align: center;
+    font-weight:bolder;
+    font-size: 30px;
+    left:70px;
+    position: relative;
+    flex-grow: 1; 
+  
+}
+.options a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+nav ul {
+    list-style: none;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.element {
+    display: inline-block;
+    margin-right: 10px; 
+    font-weight: bold;
+    font-size:20px;
+    padding:0px;
+  }
+  
+  .element:nth-child(3) {
+    margin-right: 0; 
+  }
+
+nav a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.form {
+    width: 300px;
+    height: 380px;
+    background: rgba(0, 0, 0, 0.7); 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+.form h2 {
+    width: 220px;
+    font-family: sans-serif;
+    text-align: center;
+    color:white;
+    font-size: 22px;
+    background-color: #0f5299;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 8px;
+}
+label{
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: top;
+}
+.required::after{
+    content:'*';
+    color:red;
+    font-size:20px;
+}
+
+
+
+.form input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #0F5298;
+    color: #000;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.form input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: #000;
+    font-family: Arial;
+}
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.btnn {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.btnn:last-child {
+    margin-right: 0; /* Remove margin from the last button */
+}
+.btnn {
+    width: 50%;
+    height: 40px;
+    background: #0F5298;
+    position: relative;
+    border: none;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.4s ease;
+    font-weight: bold;
+}
+
+.btnn:hover {
+    color: #0F5298;
+}
+
+.btnn a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.form .link {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    padding-top: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.form .link a {
+    text-decoration: none;
+    color: #0F5298;
+    font-display: #fff;
+    font-weight: bold;
+}
+
+.liw {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.icons a {
+    text-decoration: none;
+    color: #000;
+}
+
+.icons ion-icon {
+    color: #000;
+    font-size: 30px;
+    padding-left: 14px;
+    padding-top: 5px;
+    transition: 0.3s ease;
+}
+
+.icons ion-icon:hover {
+    color: #0F5298;
+}
+#contact {
+    {%load static%}
+    display:none;
+    padding: 20px;
+    background-color: #f2f2f2;
+    background-image:  url({% static 'background.jpg' %});
+    background-size:cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.contact-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 15px;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    
+    color: black;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    font-weight: bold;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+<body>
+    <nav id="home">
+        <div id="logo">SSN</div>
+        <div id="head">FACULTY INFORMATION MANAGEMENT SYSTEM</div>
+        <div class="options">
+        <ul>
+            <li class="element"><a href="#" onclick="scrollToElement('home')">Home</a></li>
+            <li class="element"><a href="#about">About</a></li>
+            <li class="element"><a href="#" onclick="toggleContactVisibility()">Contact</a></li>
+        </ul>
+        </div>
+    </nav> 
+
+    <div class="form">
+        <form>
+           
+            <label for="username" class="required">Username:</label>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <label for="password" class="required">Password:</label>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <ul>
+                <button type="submit" class="btnn" onclick="login(event)">Login</button>
+                <button type="reset" class="btnn">Clear</button>
+            </ul>
+        </form>
+        <div class="link">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+    
+    {% comment %} <section id="contact">
+        <h2>Contact Information</h2>
+
+        <div class="contact-card">
+            <h3>Main Campus</h3>
+            <p>Address:Sri Sivasubramaniya Nadar College of Engineering,
+                Old Mahabalipuram Road,
+                SSN Nagar, Kalavakkam- 603 110</p>
+            <p>Phone:044- 2746 9700 </p>
+            <p>Email: info@ssncollege.edu.in</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Admissions Office</h3>
+            <p>Address: 456 Admission Avenue,Sri Sivasubramaniya Nadar College of Engineering,pincode:603 110</p>
+            <p>Phone:044- 2746 9726</p>
+            <p>Email: admissions@ssncollege.edu.in</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Register's Office</h3>
+            <p>Address: 789 Registrar Road, Sri Sivasubramaniya Nadar College of Engineering,pincode:603 110</p>
+            <p>Phone: 044- 2746 9750</p>
+            <p>Email: register@ssncollege.edu.in</p>
+        </div>
+        <button><a href="/">Go Home</a></button>
+
+    </section> {% endcomment %}
+    <footer>
+        <p>&copy; 2023 SSN College Of Engineering</p>
+    </footer>
+
+</body>
+</html>

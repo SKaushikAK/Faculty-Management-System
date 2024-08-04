@@ -1,0 +1,130 @@
+<!-- table_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Example</title>
+    <!-- Add this to the head of your base.html or include it in your project -->
+    <!-- Add your custom CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom-styles.css' %}">
+
+
+    <style>
+        {% comment %} body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .center-table {
+            margin: 0 auto; /* This centers the element horizontally within the flex container */
+        } {% endcomment %} 
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Set a background color for the body */
+        }
+    
+        .container {
+            background-color: #ffffff; /* Set a background color for the container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        }
+    
+        .center-table {
+            margin: 0 auto;
+        }
+    
+        #dataTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a box shadow to the table */
+        }
+    
+        dataTable th,dataTable td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Add a border between rows */
+        }
+    
+        thead {
+            background-color: #3498db; /* Set a background color for header cells */
+            color: #fff; /* Set text color for header cells */
+        }
+    
+        tbody tr:hover {
+            background-color: #f5f5f5; /* Change background color on hover */
+        }
+    
+         .img-thumbnail {
+            border-radius: 50%; /* Make the profile images round */
+        }  
+        {% comment %} .bg{
+            background-color:blue;
+        } {% endcomment %} 
+        
+    </style>
+</head>
+<body>  
+    <div class='bg'>
+    <div class='center-table'>
+        <label for="filterSelect">Filter by:</label>
+        <select id="filterSelect" onchange="filterTable()">
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+            <!-- Add more options for other columns -->
+        </select>
+
+        <table border="1" id="dataTable">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+</div>
+
+    <script>
+        function filterTable() {
+            var filterSelect = document.getElementById("filterSelect");
+            var selectedFilter = filterSelect.value;
+            var table = document.getElementById("dataTable");
+            var rows = table.getElementsByTagName("tr"); 
+            console.log(rows.length);
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var cell = row.getElementsByTagName("td")[columns.indexOf(selectedFilter)];
+
+                if (selectedFilter === "all" || cell.innerText.includes(selectedFilter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

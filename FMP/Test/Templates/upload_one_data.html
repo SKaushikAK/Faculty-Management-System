@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css">
+    <title>FACULTY Details</title>
+    <style>
+        body {
+            {% load static %}
+            margin: 0;
+            padding: 0;
+            background-image: url({% static 'background3.jpg' %});
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .header {
+            background-color: #1552ac;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-image {
+            width: 100px;
+            height: 90px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .user-options a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .content{
+            text-align: center;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        .profile {
+            margin: 20px;
+    
+        }
+        .left-side {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            top: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }   
+        .search-faculty {
+            margin: 10px;
+            padding: 10px;
+            background-color: #1552ac;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+        }
+        .form {
+            width: 300px;
+            height: 730px;
+            background: white; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            padding: 25px;
+        }
+        
+        
+        
+    </style></head>
+<!DOCTYPE html>
+<body>
+    <div class="main">
+        <div class="form">
+            <h1>FACULTY DETAILS</h1>
+            <form id="register" method="post" action="/upload_single/">
+                {% csrf_token %}
+                <label for="name">NAME</label><br>
+                <input type="text" name="p_name" id="name" placeholder="Enter your full name" required><br><br>
+                <label for="pan">PAN NO</label><br>
+                <input type="number" name="pan" id="pan" placeholder="Enter the pan no" required><br><br>
+                <label for="text">QUALIFICATION</label><br>
+                <input type="text" name="qual" id="qual" placeholder="Enter a qualification"><br><br>
+                <label for="spe">SPECIALIZATION</label><br>
+                <input type="text" name="spec" id="spec" placeholder="Enter a specialization"><br><br>
+                <label for="eid">DESIGNATI0N</label><br>
+                <input type="text" name="des" id="des" placeholder="Enter a Designation"><br><br>
+                <label for="eid">DATE OF JOIN</label><br>
+                <input type="text" name="doj" id="des" placeholder="DD/MM/YYYY"><br><br>
+                <label for="eid">DATE OF Designation</label><br>
+                <input type="text" name="dod" id="des" placeholder="DD/MM/YYYY"><br><br>
+                <label for="eid">Currently</label><br>
+                <input type="text" name="cur" id="des" placeholder="Enter CURRENT POSITION"><br><br>
+                <label for="eid">Nature of Association</label><br>
+                <input type="text" name="as" id="des" placeholder="Enter a ASSOCIATION"><br><br>
+                <label for="eid">If Contractual</label><br>
+                <input type="text" name="con" id="des" placeholder=""><br><br>
+                <label for="eid">Date of Leaving</label><br>
+                <input type="text" name="dol" id="des" placeholder="DD/MM/YYYY"><br><br>
+                
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button> 
+                </div><!--end register-->  
+            </form>
+    </div><!--end main-->
+    <script>
+        function patientformsubmit(){
+            alert('Appointment made successfully')
+            
+        }
+    </script>
+</body>
+</html>
